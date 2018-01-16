@@ -10,7 +10,7 @@ public class BytesCountReducer extends Reducer<IntWritable, IPBytesWritable, Int
         int requestSum = 0;
         long totalBytesSum = 0;
 
-        for (IPBytesWritable value: values) {
+        for (IPBytesWritable value : values) {
             requestSum += value.getRequests();
             totalBytesSum += value.getBytes();
         }

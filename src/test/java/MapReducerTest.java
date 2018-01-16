@@ -33,11 +33,4 @@ public static final Text INPUT_TEXT1 = new Text("ip97 - - [24/Apr/2011:09:33:39 
         mapReduceDriver.withOutput(new IntWritable(98), new AverageBytesWritable(305.5,611));
         mapReduceDriver.runTest();
     }
-
-//    @Test
-//    public void testMapReduceWithDelimiters() throws IOException {
-//        mapReduceDriver.withInput(new LongWritable(0), INPUT_TEXT2);
-//        mapReduceDriver.withOutput(new IntWritable(4), TEXT1);
-//        mapReduceDriver.runTest();
-//    }
 }

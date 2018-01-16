@@ -51,6 +51,5 @@ public class ReducerTest {
         reduceDriver.setInput(IP, valuesList);
         reduceDriver.withOutput(IP, OUTPUT_2);
         reduceDriver.runTest();
-
     }
 }

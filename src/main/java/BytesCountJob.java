@@ -16,8 +16,13 @@ public class BytesCountJob {
         job.setMapperClass(BytesCountMapper.class);
         job.setReducerClass(BytesCountReducer.class);
         job.setCombinerClass(BytesCountCombiner.class);
+        job.setSortComparatorClass(IntWritable.Comparator.class);
+
+        job.setMapOutputKeyClass(IntWritable.class);
+        job.setMapOutputValueClass(IPBytesWritable.class);
         job.setOutputKeyClass(IntWritable.class);
-        job.setOutputValueClass(IPBytesWritable.class);
+        job.setOutputValueClass(AverageBytesWritable.class);
+
         FileInputFormat.addInputPath(job, new Path(args[0]));
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
 

@@ -5,10 +5,14 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
+/**
+ * Implements custom writable for final output
+ */
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
 @Getter
+@Setter
 public class AverageBytesWritable implements Writable {
     private double averageBytes;
     private long totalBytes;

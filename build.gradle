@@ -14,8 +14,7 @@ dependencies {
 
     compile 'org.apache.hadoop:hadoop-common:2.6.3',
             'org.apache.hadoop:hadoop-mapreduce-client-core:2.6.3',
-            'eu.bitwalker:UserAgentUtils:1.20'
-
+            'net.sf.uadetector:uadetector-resources:+'
 
     testCompile 'org.apache.mrunit:mrunit:1.1.0:hadoop2',
             'org.projectlombok:lombok:+'

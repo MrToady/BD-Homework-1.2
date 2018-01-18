@@ -1,5 +1,3 @@
-import net.sf.uadetector.UserAgentStringParser;
-import net.sf.uadetector.service.UADetectorServiceFactory;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
@@ -9,14 +7,12 @@ import java.io.IOException;
 import java.util.StringTokenizer;
 
 public class BytesCountMapper extends Mapper<LongWritable, Text, IntWritable, IPBytesWritable> {
-    private final UserAgentStringParser userAgentStringParser = UADetectorServiceFactory.getResourceModuleParser();
     private IPBytesWritable ipBytesWritable = new IPBytesWritable();
     private IntWritable ipNumber = new IntWritable();
     private static final String DELIMITER = "\n";
     private static final String PROTOCOL_VERSION = "HTTP/1.";
     private static final int OFFSET = 14;
     private static final int IP_OFFSET = 2;
-    private static final String USER_AGENT_GROUP_NAME = "UserAgent";
 
     /**
      * Parses input string to separate words according to delimiter
@@ -41,26 +37,10 @@ public class BytesCountMapper extends Mapper<LongWritable, Text, IntWritable, IP
                 bytes = 0;
             }
 
-            context.getCounter(USER_AGENT_GROUP_NAME, getUserAgent(log))
-                    .increment(1);
-
             ipNumber.set(ip);
             ipBytesWritable.setBytes(bytes);
             ipBytesWritable.setRequests(1);
             context.write(ipNumber, ipBytesWritable);
         }
-    }
-
-    /**
-     * Parses log string and find User Agent part
-     *
-     * @return user agent name
-     */
-    private String getUserAgent(String log) {
-        int length = log.length();
-        int startOfUAInfo = log.lastIndexOf('"', length - 2) + 1;
-        String userAgentInfo = log.substring(startOfUAInfo, length - 1);
-
-        return userAgentStringParser.parse(userAgentInfo).getName();
     }
 }

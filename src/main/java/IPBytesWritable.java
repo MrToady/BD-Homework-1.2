@@ -5,12 +5,16 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
+/**
+ * Implements custom writable for intermediate processing
+ */
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
 @Getter
-public class IPBytesWritable implements Writable {
+@Setter
 
+public class IPBytesWritable implements Writable {
     private long bytes;
     private int requests;
 

@@ -11,6 +11,7 @@ import java.io.IOException;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
+@ToString
 @Getter
 @Setter
 

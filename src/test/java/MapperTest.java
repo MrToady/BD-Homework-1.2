@@ -35,7 +35,7 @@ public class MapperTest {
     }
 
     @Test
-    public void testMapper() throws IOException {
+    public void testMapWithRegularInput() throws IOException {
         mapDriver.withInput(new LongWritable(), INPUT_TEXT1);
         mapDriver.withOutput(new IntWritable(97), OUTPUT_1);
         mapDriver.withOutput(new IntWritable(98), OUTPUT_2);
@@ -44,7 +44,7 @@ public class MapperTest {
     }
 
     @Test
-    public void TestMapperWithStatus304() throws IOException{
+    public void TestMapWithStringContainsEmptyBytesValue() throws IOException{
         mapDriver.withInput(new LongWritable(), INPUT_TEXT2);
         mapDriver.withOutput(new IntWritable(29), OUTPUT_5);
         mapDriver.withOutput(new IntWritable(28), OUTPUT_4);

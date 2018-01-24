@@ -26,7 +26,7 @@ public static final Text INPUT_TEXT1 = new Text("ip97 - - [24/Apr/2011:09:33:39 
     }
 
     @Test
-    public void testMapReduce() throws IOException {
+    public void testMapReduceWithStringContainsTheSameIpAddress() throws IOException {
         mapReduceDriver.withInput(new LongWritable(0), INPUT_TEXT1);
         mapReduceDriver.withOutput(new IntWritable(97), new AverageBytesWritable(12550,12550));
         mapReduceDriver.withOutput(new IntWritable(98), new AverageBytesWritable(305.5,611));

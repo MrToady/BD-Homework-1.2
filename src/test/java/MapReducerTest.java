@@ -9,9 +9,9 @@ import java.io.IOException;
 
 public class MapReducerTest {
 
-public static final Text INPUT_TEXT1 = new Text("ip97 - - [24/Apr/2011:09:33:39 -0400] \"GET / HTTP/1.1\" 200 12550 \"-\" \"Baiduspider+(+http://www.baidu.com/search/spider.htm)\"\n" +
-        "ip98 - - [24/Apr/2011:09:36:36 -0400] \"GET /robots.txt HTTP/1.1\" 404 286 \"-\" \"Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)\"\n" +
-        "ip98 - - [24/Apr/2011:09:37:25 -0400] \"GET /docs/rhl-rg-6.1en/s1-modules-cdromparameters.html HTTP/1.1\" 404 325 \"-\" \"Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)\"");
+    public static final Text INPUT_TEXT1 = new Text("ip97 - - [24/Apr/2011:09:33:39 -0400] \"GET / HTTP/1.1\" 200 12550 \"-\" \"Baiduspider+(+http://www.baidu.com/search/spider.htm)\"");
+    public static final Text INPUT_TEXT2 = new Text("ip98 - - [24/Apr/2011:09:36:36 -0400] \"GET /robots.txt HTTP/1.1\" 404 286 \"-\" \"Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)\"");
+    public static final Text INPUT_TEXT3 = new Text("ip98 - - [24/Apr/2011:09:37:25 -0400] \"GET /docs/rhl-rg-6.1en/s1-modules-cdromparameters.html HTTP/1.1\" 404 325 \"-\" \"Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)\"");
 
     private MapReduceDriver<LongWritable, Text, IntWritable, IPBytesWritable, IntWritable, AverageBytesWritable> mapReduceDriver;
 
@@ -28,6 +28,8 @@ public static final Text INPUT_TEXT1 = new Text("ip97 - - [24/Apr/2011:09:33:39 
     @Test
     public void testMapReduceWithStringContainsTheSameIpAddress() throws IOException {
         mapReduceDriver.withInput(new LongWritable(0), INPUT_TEXT1);
+        mapReduceDriver.withInput(new LongWritable(0), INPUT_TEXT2);
+        mapReduceDriver.withInput(new LongWritable(0), INPUT_TEXT3);
         mapReduceDriver.withOutput(new IntWritable(97), new AverageBytesWritable(12550,12550));
         mapReduceDriver.withOutput(new IntWritable(98), new AverageBytesWritable(305.5,611));
         mapReduceDriver.runTest();

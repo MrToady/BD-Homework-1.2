@@ -29,7 +29,7 @@ public class ReducerTest {
     }
 
     @Test
-    public void testReducer() throws IOException {
+    public void testReduceWithSingleRequests() throws IOException {
 
         valuesList = new ArrayList<>();
         valuesList.add(INPUT_1);
@@ -42,7 +42,7 @@ public class ReducerTest {
     }
 
     @Test
-    public void testReducerWithPluralRequests() throws IOException {
+    public void testReduceWithMultipleRequests() throws IOException {
 
         valuesList = new ArrayList<>();
         valuesList.add(INPUT_4);
